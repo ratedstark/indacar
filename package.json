@@ -1,0 +1,20 @@
+{
+  "name": "car",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "forerunnerdb": "^2.0.22",
+    "nodemon": "^1.18.9",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}

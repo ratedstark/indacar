@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<title>Graficas</title>
+</head>
+
+<body>
+	<div class ="container">
+		<fieldset>
+			
+			<form action="/" method="post" style="margin-top: 10px">
+				<label>Codigo: </label>
+				<input type="text" name ="codigo" class="ghost-input" placeholder="Ingresa el codigo" required>
+				<input type="submit" class="ghost-button btn btn-danger"value="Buscar">
+				<br>	
+					<% if(km == null){%>
+		            <p><%=error%></p>
+		            <% } %>
+		            <% if(km != null){%>
+		            <p>Promedio semanal: <%=promedio%></p>
+					<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<button class ="btn btn-primary" onclick="graficas(<%=km[0]%>,<%=km[1]%>,<%=km[2]%>,<%=km[3]%>,<%=km[4]%>)">Mostrar grafica</button>
+					<%}%>
+			</form>
+		</fieldset>
+    </div>   
+
+</body>
+<script>
+			function graficas(km,km2,km3,km4,km5) {
+
+				var chart = new CanvasJS.Chart("chartContainer", {
+					animationEnabled: true,
+					theme: "light2", // "light1", "light2", "dark1", "dark2"
+					title: {
+						text: "Gasto de gasolina"
+					},
+					axisY: {
+						title: "Gasto de gasolina en lts",
+						suffix: "lts",
+						includeZero: false
+					},
+					axisX: {
+						title: "Dias"
+					},
+					data: [{
+						type: "column",
+						yValueFormatString: "#,##0.0#\"lts\"",
+						dataPoints: [
+							{ label: "Lunes", 		y: km},	
+							{ label: "Martes", 		y: km2},	
+							{ label: "Miercoles", 	y: km3},
+							{ label: "Jueves", 		y: km4},	
+							{ label: "Viernes", 	y: km5},
+						]
+					}]
+				});
+				chart.render();
+				}
+				</script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</html>
